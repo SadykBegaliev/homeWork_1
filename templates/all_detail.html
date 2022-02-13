@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail</title>
+</head>
+<body>
+<h1>{{ details.name }}</h1>
+<img src="{{ details.image.url }}" alt="">
+<p>{{ details.description }}</p>
+<p>Автор: {{ details.author }}</p>
+<p>Год: {{ details.year }}</p>
+<p>Жанр:  {{ details.genre }}</p>
+<p>Количество страниц:  {{ details.pages }}</p>
+<p>Дата добаления:  {{ details.created_date }}</p>
+<p>Дата последних именений:  {{ details.update_date }}</p>
+<div>
+    <h2>Comments</h2>
+    <ul>
+        {% for i in details.shows_comment.all %}
+        <li>
+        <p>{{ i.text }}</p>
+        <p>{{ i.created_date }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
