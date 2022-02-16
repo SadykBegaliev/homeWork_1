@@ -6,7 +6,8 @@ class Book_detail(models.Model):
         ('Боевик', 'Боевик'),
         ('Драма', 'Драма'),
         ("Роман", "Роман"),
-        ("Комедия", "Комедия")
+        ("Комедия", "Комедия"),
+        ("Трагедия", "Трагедия")
     )
     name = models.CharField(max_length=100)
     author = models.CharField(max_length=25)
