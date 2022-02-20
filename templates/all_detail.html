@@ -1,29 +1,79 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
 </head>
 <body>
-<h1>{{ details.name }}</h1>
-<img src="{{ details.image.url }}" alt="">
-<p>{{ details.description }}</p>
-<p>Автор: {{ details.author }}</p>
-<p>Год: {{ details.year }}</p>
-<p>Жанр:  {{ details.genre }}</p>
-<p>Количество страниц:  {{ details.pages }}</p>
-<p>Дата добаления:  {{ details.created_date }}</p>
-<p>Дата последних именений:  {{ details.update_date }}</p>
+
+<style>
+    .book__detail__image {
+        height: 250px;
+        object-fit: cover;
+    }
+
+    body {
+        background: rgb(69, 38, 194);
+        background: linear-gradient(90deg, rgba(69, 38, 194, 1) 5%, rgba(187, 62, 176, 1) 53%, rgba(255, 0, 112, 1) 100%);
+    }
+    .body__detail {
+        font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+        margin-bottom: 100px;
+        margin-top: 20px;
+    }
+    .book__detail__container {
+        margin-top: 20px;
+
+
+    }
+</style>
+
+<div class="container book__detail__container">
+    <div class="card" style="width: 18rem;">
+        <img src="{{ details.image.url }}" class="card-img-top book__detail__image" alt="...">
+        <div class="card-body body__detail">
+            <h1 class="card-title">{{ details.name }}</h1>
+            <p class="card-text">{{ details.description }}</p>
+            <p class="card-text">Автор: {{ details.author }}</p>
+            <p class="card-text">Год: {{ details.year }}</p>
+            <p class="card-text">Жанр: {{ details.genre }}</p>
+            <p class="card-text">Количество страниц:{{ details.pages }}</p>
+            <p class="card-text">Дата добавления: {{ details.created_date }}</p>
+            <p class="card-text">Дата последних изменений: {{ details.update_date }}</p>
+        </div>
+    </div>
+</div>
+
+{#</div>#}
+{#<h1>{{ details.name }}</h1>#}
+{#<img src="{{ details.image.url }}" alt="">#}
+{#<p>{{ details.description }}</p>#}
+{#<p>Автор: {{ details.author }}</p>#}
+{#<p>Год: {{ details.year }}</p>#}
+{#<p>Жанр:  {{ details.genre }}</p>#}
+{#<p>Количество страниц:  {{ details.pages }}</p>#}
+{#<p>Дата добаления:  {{ details.created_date }}</p>#}
+{#<p>Дата последних именений:  {{ details.update_date }}</p>#}
+
 <div>
-    <h2>Comments</h2>
-    <ul>
-        {% for i in details.shows_comment.all %}
-        <li>
-        <p>{{ i.text }}</p>
-        <p>{{ i.created_date }}</p>
-        </li>
-        {% endfor %}
-    </ul>
+    <div>
+        <h2>Comments</h2>
+        <ul>
+            {% for i in details.shows_comment.all %}
+                <li>
+                    <p>{{ i.text }}</p>
+                    <p>{{ i.created_date }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div>
+    <button type="button" class="btn btn-secondary"><a href="/detail/{{ details.id }}/delete/">Delete</a></button>
+    <button type="button" class="btn btn-secondary"><a href="/detail/{{ details.id }}/update/">Change</a></button>
 </div>
 </body>
 </html>

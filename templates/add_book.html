@@ -1,14 +1,67 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Add book</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css/' %}"/>
 </head>
 <body>
-<form action="/add-book/" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Add">
-</form>
+<style>
+    body {
+        background: rgb(69,38,194);
+        background: linear-gradient(90deg, rgba(69,38,194,1) 5%, rgba(187,62,176,1) 53%, rgba(255,0,112,1) 100%);
+    }
+    .form_add_book {
+        margin-top: 20px;
+        border-radius: 160px;
+        border: none;
+    }
+    .mb__book {
+        color: white;
+    }
+    .container__add__book {
+        margin-top: 30px;
+        border-radius: 130px;
+        justify-content: center;
+        gap: 20px;
+        display: flex;
+        height: 100%;
+    }
+    .button__add {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        max-width: 800px;
+        margin-top: 20px;
+
+    }
+</style>
+<div class="container button__add">
+    <button type="button" class="btn btn-secondary"><a href="/detail/">Books</a></button>
+</div>
+<div class="container container__add__book">
+    <div class="mb-3 mb__book">
+        <div class="row gy-6">
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-6">
+                    <label for="exampleFormControlInput1" class="form-label form_add_book">{{ form.as_p }}</label>
+                    <input type="submit" class="form-control" id="exampleFormControlInput1" value="add">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{#<div class="mb-3">#}
+{#  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>#}
+{#  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>#}
+{#</div>#}
+
+{#<form action="/add-book/" method="POST" enctype="multipart/form-data">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit" value="Add">#}
+{#</form>#}
 </body>
 </html>
