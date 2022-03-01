@@ -1,13 +1,16 @@
 from django.urls import path
-from . import views
+from . import views, models
 
 
 app_name = "detail"
 
 urlpatterns = [
-    path('detail/', views.get_book_detail, name='detail'),
-    path('detail/<int:id>/', views.get_book_detail2, name='details'),
-    path('detail/<int:id>/update/', views.push_book_update, name='details_update'),
-    path('detail/<int:id>/delete/', views.book_delete, name='details_delete'),
-    path('add-book/', views.add_show, name='add_book'),
+    path('detail/', views.BooksListView.as_view(), name='detail'),
+    path('detail/fantasy/', views.BooksListView.as_view(queryset=models.Book_detail.objects.filter(genre="Фэнтези").order_by("-created_date")), name='detail'),
+    path('detail/novel/', views.BooksListView.as_view(queryset=models.Book_detail.objects.filter(genre="Роман").order_by("-created_date")), name='detail'),
+    path('detail/action/', views.BooksListView.as_view(queryset=models.Book_detail.objects.filter(genre="Боевик").order_by("-created_date")), name='detail'),
+    path('detail/<int:id>/', views.BookDetailView.as_view(), name='details'),
+    path('detail/<int:id>/update/', views.BookUpdateView.as_view(), name='details_update'),
+    path('detail/<int:id>/delete/', views.BookDeleteView.as_view(), name='details_delete'),
+    path('add-book/', views.BookCreateView.as_view(), name='add_book'),
 ]

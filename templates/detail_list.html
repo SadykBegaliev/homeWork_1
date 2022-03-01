@@ -32,11 +32,20 @@ background: linear-gradient(
         font-family: DejaVu Sans Condensed;
         color: #badbcc;
     }
+    .book__button {
+        background-color: white;
+    }
 
 </style>
+<div>
+    <button type="button" class="btn btn_secondary book__button"><a href="/detail/">Все</a></button>
+    <button type="button" class="btn btn_secondary book__button"><a href="/detail/fantasy/">Фэнтези</a></button>
+    <button type="button" class="btn btn_secondary book__button"><a href="/detail/novel/">Роман</a></button>
+    <button type="button" class="btn btn_secondary book__button"><a href="/detail/action/">Боевик</a></button>
+</div>
 <div class="container shows__container">
-    <div class="row g-5">
-        {% for i in detail %}
+    <div class="row gy-5">
+        {% for i in object_list %}
             <div class="col-4">
                 <div class="card shows__card">
                     <img src="{{ i.image.url }}" class="card-img-top shows__img" alt="...">

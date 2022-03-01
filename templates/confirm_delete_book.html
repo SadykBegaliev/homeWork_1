@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmation</title>
+</head>
+<body>
+<form action="" method="POST">
+    {% csrf_token %}
+    <h2>Вы уверены, что хотите удалить ?</h2>
+    <input type="submit" value="Удалить">
+</form>
+</body>
+</html>

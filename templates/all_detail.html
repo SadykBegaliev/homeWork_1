@@ -32,16 +32,16 @@
 
 <div class="container book__detail__container">
     <div class="card" style="width: 18rem;">
-        <img src="{{ details.image.url }}" class="card-img-top book__detail__image" alt="...">
+        <img src="{{ object.image.url }}" class="card-img-top book__detail__image" alt="...">
         <div class="card-body body__detail">
-            <h1 class="card-title">{{ details.name }}</h1>
-            <p class="card-text">{{ details.description }}</p>
-            <p class="card-text">Автор: {{ details.author }}</p>
-            <p class="card-text">Год: {{ details.year }}</p>
-            <p class="card-text">Жанр: {{ details.genre }}</p>
-            <p class="card-text">Количество страниц:{{ details.pages }}</p>
-            <p class="card-text">Дата добавления: {{ details.created_date }}</p>
-            <p class="card-text">Дата последних изменений: {{ details.update_date }}</p>
+            <h1 class="card-title">{{ object.name }}</h1>
+            <p class="card-text">{{ object.description }}</p>
+            <p class="card-text">Автор: {{ object.author }}</p>
+            <p class="card-text">Год: {{ object.year }}</p>
+            <p class="card-text">Жанр: {{ object.genre }}</p>
+            <p class="card-text">Количество страниц:{{ object.pages }}</p>
+            <p class="card-text">Дата добавления: {{ object.created_date }}</p>
+            <p class="card-text">Дата последних изменений: {{ object.update_date }}</p>
         </div>
     </div>
 </div>
@@ -72,8 +72,8 @@
 </div>
 
 <div>
-    <button type="button" class="btn btn-secondary"><a href="/detail/{{ details.id }}/delete/">Delete</a></button>
-    <button type="button" class="btn btn-secondary"><a href="/detail/{{ details.id }}/update/">Change</a></button>
+    <button type="button" class="btn btn-secondary"><a href="/detail/{{ object.id }}/delete/">Delete</a></button>
+    <button type="button" class="btn btn-secondary"><a href="/detail/{{ object.id }}/update/">Change</a></button>
 </div>
 </body>
 </html>
